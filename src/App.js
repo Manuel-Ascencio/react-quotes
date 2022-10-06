@@ -2,31 +2,19 @@ import React from "react";
 import "./App.css";
 import { useState } from "react";
 import quotes from "./quotes.json";
+import { Main } from "./components/QuoteBoxStyles";
 import QuoteBox from "./components/QuoteBox";
-import Util from "./components/Util";
+import { Random, Colors } from "./components/Util";
 
 function App() {
-  const colors = [
-    "#136066",
-    "#382924",
-    "#db4b23",
-    "#e89d10",
-    "#11644d",
-    "#304878",
-    "#622824",
-    "#412a9c",
-    "#7d2948",
-    "#a84818",
-  ];
+  const [phrase, setPhrase] = useState(quotes[Random(quotes.length)]);
 
-  const [phrase, setPhrase] = useState(quotes[Util(quotes.length)]);
+  const background = Colors[Random(Colors.length)];
 
-  const background = colors[Util(colors.length)];
-
-  let changeQuote = () => setPhrase(quotes[Util(quotes.length)]);
+  let changeQuote = () => setPhrase(quotes[Random(quotes.length)]);
 
   return (
-    <main style={{ background }}>
+    <Main style={{ background }}>
       <QuoteBox
         cita={phrase.quote}
         author={phrase.author}
@@ -34,7 +22,7 @@ function App() {
         change={changeQuote}
         color={background}
       />
-    </main>
+    </Main>
   );
 }
 

@@ -1,34 +1,36 @@
 import React from "react";
+import { FaQuoteLeft, FaTwitter } from "react-icons/fa";
+import {
+  MainContainer,
+  QuoteInfo,
+  Image,
+  Text,
+  Author,
+  Tweet,
+  Button,
+} from "./QuoteBoxStyles";
+
 function QuoteBox({ cita, author, image, change, color }) {
   return (
-    <div id="quote-box">
-      <i className="fas fa-quote-left icon" style={{ color }}></i>
-      <div className="quote-info">
-        <blockquote>
-          <img src={image} alt="" />
-          <p style={{ color }} id="text">
-            {cita}
-          </p>
-        </blockquote>
-        <h3 style={{ color }} id="author">
-          {author}
-        </h3>
-      </div>
-      <a
+    <MainContainer>
+      <FaQuoteLeft color={color} />
+      <QuoteInfo>
+        <Image image={image} />
+        <Text color={color}>{cita}</Text>
+
+        <Author color={color}> - {author}</Author>
+      </QuoteInfo>
+      <Tweet
         href="https://twitter.com/intent/tweet"
         rel="noopener noreferrer"
-        target={"_blank"}
+        target="_blank"
       >
-        <i
-          className="fa fa-twitter icon-2"
-          style={{ color }}
-          title="Tweet this quote!"
-        />
-      </a>
-      <button onClick={change} style={{ background: color }} id="new-quote">
+        <FaTwitter color={color} title="Tweet this quote!" />
+      </Tweet>
+      <Button onClick={change} background={color}>
         Next
-      </button>
-    </div>
+      </Button>
+    </MainContainer>
   );
 }
 
